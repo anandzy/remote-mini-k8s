@@ -19,7 +19,7 @@ resource "aws_instance" "ec2" {
   key_name           = "Mac"
     connection {
     type            = "ssh"
-    user            = "root"
+    user            = "ubuntu"
     private_key     = file("/Users/anandz/.ssh/id_rsa")
     host            = self.public_ip
   }
