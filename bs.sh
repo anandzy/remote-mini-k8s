@@ -1,14 +1,12 @@
-
 #!/bin/bash
 
-
 #Shortcuts & alias - Updating the vim to give line numbers automatically.
-echo alias 'c=clear' >> ~/.bashrc && \
-echo alias 'e=exit' >> ~/.bashrc && \
-echo alias 'd=docker' >> ~/.bashrc && \
-echo alias 'k=kubectl' >> ~/.bashrc && \
-echo alias 'm=minikube' >> ~/.bashrc && \
-echo 'set number' >> ~/.vimrc && \
+echo alias 'c=clear' >> ~/.bashrc
+echo alias 'e=exit' >> ~/.bashrc
+echo alias 'd=docker' >> ~/.bashrc
+echo alias 'k=kubectl' >> ~/.bashrc
+echo alias 'm=minikube' >> ~/.bashrc
+echo 'set number' >> ~/.vimrc
 alias c=clear && alias d=docker && alias k=kubectl && alias e=exit
 
 
@@ -20,7 +18,7 @@ python3-pip awscli libpq-dev zip unzip tar nmap \
 inetutils-traceroute traceroute inetutils-ping
 sleep 5
 
-updatedb
+#updatedb
 
 #Docker installation scriot
 curl -fsSL https://get.docker.com -o get-docker.sh
