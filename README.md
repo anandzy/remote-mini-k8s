@@ -30,7 +30,7 @@ ssh $RMK_EC2_PUBLIC_IP -l ubuntu sudo htpasswd -c /etc/nginx/.htpasswd minikube
 ```
 aws route53 change-resource-record-sets --hosted-zone-id $DOMAIN_ZONE_ID --change-batch file://r53.json
 ```
-### Ingress-controller on minikube(Optional).
+### Ingress-controller on minikube(Optional), need root access on ec2 to execute this command.
 ```sh
 minikube addons enable ingress
 kubectl get pods --namespace=ingress-nginx
