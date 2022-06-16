@@ -20,13 +20,14 @@ sudo updatedb
 
 #Docker installation scriot
 curl -fsSL https://get.docker.com -o get-docker.sh
-sleep 5
+sleep 2
 sudo sh get-docker.sh
-sleep 5
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
+sleep 2
 sudo groupadd docker
 sudo usermod -aG docker $USER
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
 
 
 #kubectl installation
