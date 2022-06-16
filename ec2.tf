@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 locals {
-  name   = "minikube"
-  region = "us-east-1"
-  ami = "ami-052efd3df9dad4825"
-  instance_type = "t2.micro"
+  name          = "minikube"
+  region        = "us-east-1"
+  ami           = "ami-052efd3df9dad4825"
+  instance_type = "t3.xlarge"
   tags = {
-    Owner       = "anand"
+    Owner       = "minikube"
     Environment = "dev"
   }
 }
