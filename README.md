@@ -21,14 +21,14 @@
 
 ### Reset the password.
 ```
-ssh <public_ip> -l ubuntu sudo htpasswd -c /etc/nginx/.htpasswd minikube
+ssh $RMK_EC2_PUBLIC_IP -l ubuntu sudo htpasswd -c /etc/nginx/.htpasswd minikube
 ```
 ### Make sure you can access url/public_ip via with right username & password.
 [remote url for k8s](http://k8s.truetech.solutions)
 
 ### Update the IP with R53(Optional).
 ```
-aws route53 change-resource-record-sets --hosted-zone-id <zonal_id> --change-batch file://r53.json
+aws route53 change-resource-record-sets --hosted-zone-id $DOMAIN_ZONE_ID --change-batch file://r53.json
 ```
 ### Ingress-controller on minikube(Optional).
 ```sh
