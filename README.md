@@ -1,14 +1,43 @@
 # remote-mini-k8s
 
-Usefull links 
-<https://www.bogotobogo.com/DevOps/Docker/Docker_Kubernetes_Nginx_Ingress_Controller.php>
-#<https://medium.com/faun/accessing-a-remote-minikube-from-a-local-computer-fd6180dd66dd>
+### Usefull links
+
+[Docker_Kubernetes_Nginx_Ingress_Controller](https://www.bogotobogo.com/DevOps/Docker/Docker_Kubernetes_Nginx_Ingress_Controller.php)
+
+[Minikube from local](https://medium.com/faun/accessing-a-remote-minikube-from-a-local-computer-fd6180dd66dd)
+
+### Pre Set-ups
+
+- 'Git' to pull this repo from github.
+
+- You need to have aws credentials in place with permissions that can create ec2 in aws.
+
+- Terraform latest version on your local manchine.
+
+- R53 zone-ID if you want to bind with domain.(Optional).
 
 
-## Post set-ups
+### Post set-ups
 
-#Reset the password
+### Reset the password.
+```
 ssh <public_ip> -l ubuntu sudo htpasswd -c /etc/nginx/.htpasswd minikube
+```
+### Make sure you can access url/public_ip via with right username & password.
+[remote url for k8s](http://k8s.truetech.solutions)
 
-#Update the IP with R53(Optional)
-aws route53 change-resource-record-sets --hosted-zone-id Z09920395O50P4XEEOZ4 --change-batch file://r53.json
+### Update the IP with R53(Optional).
+```
+aws route53 change-resource-record-sets --hosted-zone-id <zonal_id> --change-batch file://r53.json
+```
+### Ingress-controller on minikube(Optional).
+```sh
+minikube addons enable ingress
+kubectl get pods --namespace=ingress-nginx
+```
+
+## Flow Diagram Below, report issues and contribute in possible ways.
+
+![Flow Diagram](flow_diagram.jpeg?raw=true "flow")
+
+
