@@ -16,7 +16,7 @@ LIST_OF_PACKS="vim conntrack jq tree wget elinks mlocate xclip git python3 pytho
 sudo apt install -y $LIST_OF_PACKS
 sleep 1
 
-#updatedb
+sudo updatedb
 
 #Docker installation scriot
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -25,10 +25,9 @@ sudo sh get-docker.sh
 sleep 5
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
-#sudo groupadd docker
-sudo usermod -aG docker ubuntu
-sudo usermod -aG sudo ubnutu
-sudo usermod -aG root docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
 
 #kubectl installation
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"

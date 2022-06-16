@@ -13,7 +13,7 @@ locals {
   }
 }
 
-resource "aws_instance" "ec2" {
+resource "aws_instance" "minikube" {
   ami                = "${local.ami}"
   instance_type      = "${local.instance_type}"
   key_name           = "Mac"

@@ -1,3 +1,3 @@
-output "aws_ec2_host" {
+output "aws_instance" {
     value = "public_ip key_name user_data"
 }
