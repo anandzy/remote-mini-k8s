@@ -2,14 +2,14 @@
    "Comment": "CREATE/DELETE/UPSERT a record ",
    "Changes": [
       {
-         "Action": "CREATE",
+         "Action": "UPSERT",
          "ResourceRecordSet": {
             "Name": "k8s.truetech.solutions",
             "Type": "A",
             "TTL": 300,
             "ResourceRecords": [
                {
-                  "Value": "44.200.109.15"
+                  "Value": "3.231.230.107"
                }
             ]
          }
