@@ -1,4 +1,4 @@
-# remote-mini-k8s
+# Remote access your minikube on ec2(aws) via kubectl CLI
 
 ### Usefull links
 
