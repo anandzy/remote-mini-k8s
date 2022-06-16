@@ -95,7 +95,5 @@ docker run -d \
 -v /etc/nginx/conf.d/:/etc/nginx/conf.d \
 -v /etc/nginx/.htpasswd:/etc/nginx/.htpasswd \
 nginx
-
 docker ps | grep nginx
-
-sudo htpasswd -c /etc/nginx/.htpasswd minikube
+echo 'Configured k8s with minikube on ec2'
