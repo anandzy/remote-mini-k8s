@@ -2,7 +2,7 @@
 #On VM
 
 sudo -i
-minikube start
+minikube start --driver=none
 mkdir -p /etc/nginx/conf.d/ /etc/nginx/certs
 
 sudo apt-get install apache2-utils -y
@@ -11,6 +11,8 @@ sudo touch /etc/nginx/.htpasswd
 chmod +777 /etc/nginx/.htpasswd
 #Prompt for input password
 sudo htpasswd -c /etc/nginx/.htpasswd minikube
+
+minikube ip
 
 cat <<EOF > /etc/nginx/conf.d/minikube.conf 
 server {
@@ -21,13 +23,14 @@ server {
     auth_basic_user_file /etc/nginx/.htpasswd;
 
     location / {
-        proxy_pass https://192.168.49.2:8443;
+        proxy_pass https://172.31.90.70:8443;
         proxy_ssl_certificate /etc/nginx/certs/minikube-client.crt;
         proxy_ssl_certificate_key /etc/nginx/certs/minikube-client.key;
     }
 }
 EOF
 
+cat /etc/nginx/conf.d/minikube.conf 
 #https://medium.com/faun/accessing-a-remote-minikube-from-a-local-computer-fd6180dd66dd
 
 #Optional
@@ -40,6 +43,7 @@ docker run -d \
 -v /etc/nginx/.htpasswd:/etc/nginx/.htpasswd \
 nginx
 
+docker ps | grep nginx
 
 #kube-config file
 apiVersion: v1
