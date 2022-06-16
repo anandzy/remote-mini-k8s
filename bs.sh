@@ -12,6 +12,7 @@ alias c=clear && alias d=docker && alias k=kubectl && alias e=exit
 
 #Personal Ubuntu Essentials
 sudo apt update -y
+sleep 1
 LIST_OF_PACKS="vim conntrack jq tree wget elinks mlocate xclip git python3 python3-pip awscli libpq-dev zip unzip tar nmap inetutils-traceroute traceroute inetutils-ping"
 sudo apt install -y $LIST_OF_PACKS
 sleep 1
