@@ -1,3 +1,3 @@
-output "aws_instance" {
-  value = aws_instance.server.public_ip
+output "minikube_ip" {
+  value = aws_instance.minikube.public_ip
 }
