@@ -26,7 +26,7 @@ resource "aws_instance" "ec2" {
 
     provisioner "remote-exec" {
         inline = [
-          "bash <(curl https://raw.githubusercontent.com/anandzy/remote-mini-k8s/main/bs.sh)"
+          "curl https://raw.githubusercontent.com/anandzy/remote-mini-k8s/main/bs.sh | bash"
         ]
     }
 }
