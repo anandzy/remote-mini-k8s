@@ -17,7 +17,7 @@ sleep 1
 LIST_OF_PACKS="vim conntrack jq tree wget elinks mlocate xclip git python3 python3-pip awscli libpq-dev zip unzip tar nmap inetutils-traceroute traceroute inetutils-ping"
 sudo apt install -y $LIST_OF_PACKS
 sleep 1
-
+pip install boto3
 sudo updatedb
 
 #Docker installation scriot
@@ -56,7 +56,7 @@ sudo touch /etc/nginx/.htpasswd
 chmod +777 /etc/nginx/.htpasswd
 
 cat <<EOF > /etc/nginx/.htpasswd
-minikube:$apr1$LSD7HO9c$nvyiSlRgeWSbcUhXIowZT1
+minikube:minikube
 EOF
 
 #or 
@@ -97,3 +97,5 @@ docker run -d \
 nginx
 
 docker ps | grep nginx
+
+sudo htpasswd -c /etc/nginx/.htpasswd minikube
