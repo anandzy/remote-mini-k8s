@@ -8,9 +8,9 @@
 
 ### Pre Set-ups
 
-- 'Git' to pull this repo from github.
+- 'Git' to clone this repo from github.
 
-- You need to have aws credentials in place with permissions that can create ec2 in aws.
+- You need to have aws programmatic credentials in place with permissions that can mananage ec2/r53 in aws.
 
 - Terraform latest version on your local manchine.
 
