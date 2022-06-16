@@ -1,3 +1,3 @@
 output "aws_instance" {
-    value = "public_ip key_name user_data"
+  value = aws_instance.server.public_ip
 }

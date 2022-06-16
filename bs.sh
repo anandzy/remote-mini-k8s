@@ -23,7 +23,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sleep 2
 sudo sh get-docker.sh
 sleep 2
-sudo groupadd docker
+#sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
@@ -39,4 +39,4 @@ mv ./kubectl ~/.local/bin/kubectl
 #Minikube script for ubuntu
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-sleep 5
+sleep 1
