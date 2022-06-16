@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Shortcuts & alias - Updating the vim to give line numbers automatically.
+sudo -i
 echo alias 'c=clear' >> ~/.bashrc
 echo alias 'e=exit' >> ~/.bashrc
 echo alias 'd=docker' >> ~/.bashrc
@@ -41,3 +42,58 @@ mv ./kubectl ~/.local/bin/kubectl
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 sleep 1
+
+
+#On VM
+sudo -i
+minikube start --driver=none #run as root
+
+mkdir -p /etc/nginx/conf.d/ /etc/nginx/certs
+
+sudo apt-get install apache2-utils -y
+sudo rm -rf /etc/nginx/.htpasswd
+sudo touch /etc/nginx/.htpasswd
+chmod +777 /etc/nginx/.htpasswd
+
+cat <<EOF > /etc/nginx/.htpasswd
+minikube:$apr1$LSD7HO9c$nvyiSlRgeWSbcUhXIowZT1
+EOF
+
+#or 
+
+#sudo htpasswd -c /etc/nginx/.htpasswd minikube
+
+minikube ip
+
+cat <<EOF > /etc/nginx/conf.d/minikube.conf 
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+    auth_basic "Administrator’s Area";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+
+    location / {
+        proxy_pass https://`minikube ip`:8443;
+        proxy_ssl_certificate /etc/nginx/certs/minikube-client.crt;
+        proxy_ssl_certificate_key /etc/nginx/certs/minikube-client.key;
+    }
+}
+EOF
+
+cat /etc/nginx/conf.d/minikube.conf
+
+#minikube addons enable ingress
+#kubectl get pods --namespace=ingress-nginx
+
+#Optional
+docker run -d \
+--name nginx \
+-p 8080:80 \
+-v /root/.minikube/profiles/minikube/client.key:/etc/nginx/certs/minikube-client.key \
+-v /root/.minikube/profiles/minikube/client.crt:/etc/nginx/certs/minikube-client.crt \
+-v /etc/nginx/conf.d/:/etc/nginx/conf.d \
+-v /etc/nginx/.htpasswd:/etc/nginx/.htpasswd \
+nginx
+
+docker ps | grep nginx
