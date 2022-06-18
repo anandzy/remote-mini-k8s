@@ -44,7 +44,7 @@ sleep 1
 
 #On VM
 sudo -i
-minikube start --driver=none --nodes=3 #run as root
+minikube start --driver=none #run as root
 
 mkdir -p /etc/nginx/conf.d/ /etc/nginx/certs
 
