@@ -19,6 +19,18 @@
 
 ### Post set-ups
 
+#### After terraform sucessfully created resources, immediatly export below shown env variables IP from the same output.
+```sh
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+minikube_ip = "123.123.123.123"
+➜  remote-mini-k8s git:(main) ✗ export RMK_EC2_PUBLIC_IP=123.123.123.123
+➜  remote-mini-k8s git:(main) ✗ export DOMAIN_ZONE_ID=Z12345678890 (Get value from AWS console)
+
+```
+
 ### Reset the password.
 ```
 ssh $RMK_EC2_PUBLIC_IP -l ubuntu sudo htpasswd -c /etc/nginx/.htpasswd minikube
