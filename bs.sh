@@ -30,13 +30,11 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-
-
 #kubectl installation
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
-mkdir -p ~/.local/bin
-mv ./kubectl ~/.local/bin/kubectl
+#mkdir -p ~/.local/bin
+mv kubectl /usr/local/bin/
 
 #Minikube script for ubuntu
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -46,7 +44,7 @@ sleep 1
 
 #On VM
 sudo -i
-minikube start --driver=none #run as root
+minikube start --driver=none --nodes=3 #run as root
 
 mkdir -p /etc/nginx/conf.d/ /etc/nginx/certs
 
