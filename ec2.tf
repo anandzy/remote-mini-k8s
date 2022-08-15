@@ -20,7 +20,7 @@ resource "aws_instance" "minikube" {
     connection {
     type            = "ssh"
     user            = "ubuntu"
-    private_key     = file("/Users/anandz/.ssh/id_rsa")
+    private_key     = file("/root/.ssh/id_rsa") #Typical Mac user
     host            = self.public_ip
   }
 
