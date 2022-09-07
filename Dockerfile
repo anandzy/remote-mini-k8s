@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # 1 - RUN
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils
 RUN apt update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ssh htop unzip curl vim jq tree
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ssh htop unzip curl vim jq tree ssh
 RUN apt-get clean
 
 WORKDIR /root
@@ -27,4 +27,3 @@ RUN cp terraform /usr/bin/
 RUN rm -rf terraform*
 
 ENTRYPOINT [ "/bin/bash" ]
-
